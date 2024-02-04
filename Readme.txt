@@ -21,8 +21,8 @@ HOW TO CREATE THE APPLICATION:
 5. Add Views from EmployeeController. Visual Studio create files
     - Views/Employees/Create.cshtml  
     - Views/Employees/Delete.cshtml 
-	- Views/Employees/Edit.cshtml
-	- Views/Employees/Index.cshtml
+    - Views/Employees/Edit.cshtml
+    - Views/Employees/Index.cshtml
 
 6. Change database connection in appsettings.json.
 
