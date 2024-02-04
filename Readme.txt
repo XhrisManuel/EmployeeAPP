@@ -2,6 +2,7 @@
 Application built in Visual Studio 2022 and uses SQL Server Express as database.
 
 DATABASE:
+=========
 
 SQL Server Express
 Database: EMPDB
@@ -9,7 +10,7 @@ Tables: Employee
 Web application .NET 8 MVC use Microsoft Entity Framework package. Entity Framework takes care of creating the DB Context and creates Controllers with CRUD codes.
 
 HOW TO CREATE THE APPLICATION:
-
+==============================
 1. Create database EMPDB and table Employee in SqlServer.
 
 2. Create ASP.NET Core Web App (Model-View-Controller).  No Authorization (so not use Microsoft Identity).
@@ -122,8 +123,9 @@ HOW TO CREATE THE APPLICATION:
             }
 ```
 
-DATABASE ACCESS
-The Microsoft Entity Framework "using Microsoft.EntityFrameworkCore;" in Controllers to create (insert), read, delete and update Employee record from database.
+HOW TO DO CREATE, READ, UPDATE AND DELETE
+=========================================
+Project use The Microsoft Entity Framework. Inside controller generated from Model, it adds ```using Microsoft.EntityFrameworkCore;``` to create, read, delete and update Employee record from database.
 
 For Get (SELECT) list of Employees - method Index()
 ===================================================
