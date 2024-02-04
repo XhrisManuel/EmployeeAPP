@@ -12,7 +12,7 @@ HOW TO CREATE THE APPLICATION:
 
 1. Create database EMPDB and table Employee in SqlServer.
 
-2. Create ASP NET Core Web MVC app.
+2. Create ASP.NET Core Web App (Model-View-Controller).  No Authorization (so not use Microsoft Identity).
 
 3. Create model Models/Employee.cs file.
 
