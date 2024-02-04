@@ -121,3 +121,95 @@ HOW TO CREATE THE APPLICATION:
                 return RedirectToAction(nameof(Index));
             }
 ```
+
+DATABASE ACCESS
+The Microsoft Entity Framework "using Microsoft.EntityFrameworkCore;" in Controllers to create (insert), read, delete and update Employee record from database.
+
+For Get (SELECT) list of Employees - method Index()
+===================================================
+Entity Framework use ```await _context.Employee.ToListAsync();```
+
+Example -
+```
+public async Task<IActionResult> Index(EmployeeViewModel employeeViewModel) {
+...
+  employeeViewModel.Employees = await _context.Employee.ToListAsync();
+...
+}
+```
+
+For GET (SELECT) one Employee Record - method Details()
+=======================================================
+Entity Framework use ```_context.Employee.FirstOrDefaultAsync(m => m.Id == id);```
+
+Example -
+```
+public async Task<IActionResult> Details(int? id, bool? isLoggedin) {
+...
+ var employee = await _context.Employee
+     .FirstOrDefaultAsync(m => m.Id == id);
+...
+}
+```
+
+FOR Add (Insert) Employee - method Create()
+===========================================
+Entity Framework use ``` _context.Add(employee);  await _context.SaveChangesAsync();```
+
+Example -
+```
+ public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Email,Phone,Password")] Employee employee)
+ {
+  ...    
+         _context.Add(employee);
+         await _context.SaveChangesAsync();
+ }
+```
+
+For Change (UPDATe) Employee - method 
+Entity Framework use ```_context.Update(employee); await _context.SaveChangesAsync(); ```
+
+Example -
+```
+public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Email,Phone,Password")] Employee employee)
+{
+    _context.Update(employee);
+     await _context.SaveChangesAsync();
+}
+```
+
+For delete (DELETE) Employee - method Delete()
+==============================================
+Entity Framework use ```  _context.Employee.Remove(employee); ```
+
+Example -
+```
+[HttpPost, ActionName("Delete")]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> DeleteConfirmed(int id)
+{
+var employee = await _context.Employee.FindAsync(id);
+if (employee != null)
+{
+    _context.Employee.Remove(employee);
+}
+await _context.SaveChangesAsync();
+}
+```
+
+For Find (SEARCH) Employee - this I wrote method EmployeeExistsByEmailPassword()
+================================================================================
+
+```
+private bool EmployeeExistsByEmailPassword(String inputEmail, String inputPassword)
+{
+...
+   var employee = _context.Employee.
+            First(m => m.Email.Equals(inputEmail) & m.Password.Equals(inputPassword));
+...
+}
+```
+
+
+
+
