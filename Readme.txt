@@ -1,7 +1,14 @@
 ﻿This project is a .NET 8 MVC Web App with simple Login to view Employee List. 
 Application built in Visual Studio 2022 and uses SQL Server Express as database.
 
-How to create app:
+DATABASE:
+
+SQL Server Express
+Database: EMPDB
+Tables: Employee
+Web application .NET 8 MVC use Microsoft Entity Framework package. Entity Framework takes care of creating the DB Context and creates Controllers with CRUD codes.
+
+HOW TO CREATE THE APPLICATION:
 
 1. Create database EMPDB and table Employee in SqlServer.
 
