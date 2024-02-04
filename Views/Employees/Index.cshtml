@@ -1,0 +1,59 @@
+﻿<!-- model IEnumerable<EmployeeAPP.Models.Employee> -->
+@model EmployeeAPP.Models.EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Employees</h1>
+
+<p>
+    <button class="btn btn-warning"><a asp-action="Create" style="text-decoration:none">Create New (Add)</a></button>
+    
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Password</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Employees != null && Model.Employees.Count > 0)
+        {
+            @foreach (var item in Model.Employees)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        <!-- asp-route يعني المعلمة
+                             يعني asp-route-id أنني أقوم بتمرير المعرف كمعلمة وتستقبله وحدة التحكم كمعلمة إدخال
+                             asp-route-isLoggedin يعني أنني أمرر كمعلمة وتستقبلها وحدة التحكم كمعلمة إدخال
+                        -->
+                        <a asp-action="Edit" asp-route-id="@item.Id" asp-route-isLoggedin="@Model.isLoggedin">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" asp-route-isLoggedin="@Model.isLoggedin">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" asp-route-isLoggedin="@Model.isLoggedin">Delete</a>
+                    </td>
+                </tr>
+            }
+        } 
+    </tbody>
+</table>

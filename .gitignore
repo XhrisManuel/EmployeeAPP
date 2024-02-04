@@ -1,0 +1,4 @@
+# Ignore files in github repository
+.vs/*
+obj/*
+bin/Debug/*
